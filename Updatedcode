@@ -1,0 +1,1678 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace DemoAdoNet
+{
+    [Serializable]
+    public class Student2
+    {
+        public int Rollno { get; set; }
+        public String Name { get; set; }
+        public double Percentage { get; set; }
+    }
+    public class XmlSerializationDemo
+    {
+        static void XMLSerializationWrite(Student2 stud)
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\XmlFile.dat", FileMode.Create, FileAccess.Write);
+                XmlSerializer xs=new XmlSerializer(typeof(Student2));
+                xs.Serialize(fs, stud);
+                Console.WriteLine("Xml data added");
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void XmlSerializationRead()
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\XmlFile.dat", FileMode.Open, FileAccess.Read);
+                XmlSerializer xs = new XmlSerializer(typeof(Student2));
+                Student2 stud = (Student2)xs.Deserialize(fs);
+                Console.WriteLine(stud.Rollno);
+                Console.WriteLine(stud.Name);
+                Console.WriteLine(stud.Percentage);
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Student2 stud = new Student2 { Rollno = 101, Name = "Suraj", Percentage = 89.44 };
+            XMLSerializationWrite(stud);
+            XmlSerializationRead();
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+//using System.Runtime.Serialization.Formatters.Soap;
+using System.IO;
+
+/*namespace DemoAdoNet
+{
+    [Serializable]
+    public class Student3
+    {
+        public int Rollno { get; set; }
+        public String Name { get; set; }
+        public double Percentage { get; set; }
+    }
+    public class SOAPSerializationDemo
+    {
+        static void SOAPSerializationWrite(Student3 stud)
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\SoapFile.dat", FileMode.Create, FileAccess.Write);
+                SoapFormatter sf= new SoapFormatter();
+                sf.Serialize(fs, stud);
+                Console.WriteLine("Xml data added");
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void SOAPSerializationRead()
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\SoapFile.dat", FileMode.Open, FileAccess.Read);
+                SoapFormatter sf = new SoapFormatter();
+                Student3 stud = (Student3)sf.Deserialize(fs);
+                Console.WriteLine(stud.Rollno);
+                Console.WriteLine(stud.Name);
+                Console.WriteLine(stud.Percentage);
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Student3 stud = new Student3 { Rollno = 101, Name = "Suraj", Percentage = 89.44 };
+            SOAPSerializationWrite(stud);
+            SOAPSerializationRead();
+        }
+
+    }
+}*/
+
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DemoAdoNet
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public String CompanyName { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id} -> {Name} -> {Price} -> {CompanyName}";
+        }
+    }
+    public class LinqToObjectDemo
+    {
+        static void Main(string[] args)
+        {
+            List<Product> products = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "Mouse", Price=799, CompanyName="Dell" },
+                new Product() { Id = 2, Name = "Mouse", Price=699, CompanyName="Lenovo" },
+                new Product() { Id = 3, Name = "Laptop", Price=34799, CompanyName="Dell" },
+                new Product() { Id = 4, Name = "Laptop", Price=45799, CompanyName="Sony" },
+                new Product() { Id = 5, Name = "Laptop", Price=38799, CompanyName="Lenovo" },
+                new Product() { Id = 6, Name = "Keyboard", Price=599, CompanyName="Dell" },
+                new Product() { Id = 7, Name = "Keyboard", Price=999, CompanyName="Microsoft" },
+                new Product() { Id = 8, Name = "RAM 4GB", Price=2799, CompanyName="Intel" },
+                new Product() { Id = 9, Name = "Speaker", Price=5799, CompanyName="Sony" },
+                new Product() { Id = 10, Name = "USB Mouse", Price=1299, CompanyName="Dell" }
+            };
+
+            var result1 = from p in products
+                          select p;
+
+            var result2 = from p in products
+                          where p.Price < 2000
+                          select p;
+
+            var result3 = from p in products
+                          where p.Price > 2000 && p.Price < 3000
+                          select p;
+
+            //var result4 = from p in products
+            //              where p.CompanyName.StartsWith("D")
+            //              select p;
+            //var result4 = from p in products
+            //              where p.CompanyName.EndsWith("o")
+            //              select p;
+            var result4 = from p in products
+                          where p.CompanyName.Contains("m") || p.CompanyName.Contains("M")
+                          select p;
+
+            var result5 = from p in products
+                          where p.Price > 2000
+                          orderby p.Price
+                          select p;
+
+            var result6 = from p in products
+                          where p.Price > 2000
+                          orderby p.Price descending
+                          select p;
+
+
+            // Lambda expression
+            var res = products.Where(p => p.Price < 2000).ToList();
+            var res2 = products.Where(p => p.Price > 2000).OrderBy(x => x.Name).ToList();
+            // retrive single record
+            var res4 = products.Where(x => x.Id == 1).SingleOrDefault();
+            var res3 = products.Where(x => x.Price < 2500).OrderBy(x => x.Price).ToList().Take(3);
+
+            //var res4 = products.Where(x => x.Price < 2500).OrderBy(x => x.Price).ToList().Skip(3);
+
+            foreach (var item in result6)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DemoAdoNet
+{
+    internal class FileHandlingDemos
+    {
+        public class Dept
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Location { get; set; }
+        }
+
+
+        static void WriteToFile(Dept dept)
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\TestFile", FileMode.Create, FileAccess.Write);
+                BinaryWriter bw = new BinaryWriter(fs);
+                bw.Write(dept.Id);
+                bw.Write(dept.Name);
+                bw.Write(dept.Location);
+                bw.Close();
+                fs.Close();
+                Console.WriteLine("Data added to file");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+        static void ReadFromFile()
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\TestFile", FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                Console.WriteLine(br.ReadInt32()); //Id
+                Console.WriteLine(br.ReadString());// Name
+                Console.WriteLine(br.ReadString());// Location
+                br.Close();
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            Dept dept = new Dept { Id = 1, Name = "HR", Location = "Pune" };
+            WriteToFile(dept);
+            ReadFromFile();
+        }
+
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace DemoAdoNet
+{
+    class DisConnected
+    {
+        public static DataSet getAllStudents()
+        {
+            SqlConnection conn = null;
+
+            conn = DBConnect.getconnection();
+
+            SqlDataAdapter sda = new SqlDataAdapter("select * from student", conn);
+            DataSet ds = new DataSet();//Collection of tables
+
+            sda.Fill(ds, "student");
+            return ds;
+        }
+
+        static void Main(String[] args)
+        {
+         
+            DataSet ds = getAllStudents();  
+            foreach (DataRow dr in ds.Tables["student"].Rows)
+            {
+                Console.WriteLine(dr[0]+" " + dr[1]+" " + dr[2]);
+            }
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+
+namespace DemoAdoNet
+{
+    static class DBConnect
+    {
+        public static SqlConnection getconnection()
+        {
+            string str = "server=LAPTOP-IV9I3N8R\\SQLEXPRESS; Database=hr;Integrated Security=true";
+            SqlConnection con = null;
+            try
+            {
+                con = new SqlConnection(str);
+                con.Open();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return con;
+        }
+
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
+namespace DemoAdoNet
+{
+    [Serializable]
+    public class Student
+    {
+        public int Rollno { get; set; }
+        public String Name { get; set; }
+        public double Percentage { get; set; }
+    }
+    public class BinarySerializationDemo
+    {
+        static void BinarySerializationWrite(Student stud)
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\BinaryFile.dat", FileMode.Create, FileAccess.Write);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, stud);
+                Console.WriteLine("Bianry data added");
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        static void BinarySerializationRead()
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"G:\Files\TestFolder\BinaryFile.dat", FileMode.Open, FileAccess.Read);
+                BinaryFormatter bf = new BinaryFormatter();
+                Student stud = (Student)bf.Deserialize(fs);
+                Console.WriteLine(stud.Rollno);
+                Console.WriteLine(stud.Name);
+                Console.WriteLine(stud.Percentage);
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Student stud = new Student { Rollno = 101, Name = "Suraj", Percentage = 89.44 };
+            BinarySerializationWrite(stud);
+            BinarySerializationRead();
+
+
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    class LinkedListExample
+    {
+        static void Main(string[] args)
+        {
+            LinkedList<int> l1 = new LinkedList<int>();
+            l1.AddLast(10);
+            l1.AddLast(65);
+            l1.AddLast(90);
+            l1.AddFirst(100);
+
+            //Console.WriteLine(l1.Remove(65);
+
+            //in between add element
+            LinkedListNode<int> n1 = l1.Find(65);
+           // l1.AddAfter(n1, new LinkedListNode<int>(89));
+            l1.AddAfter(n1, 87);
+
+            foreach (int i in l1)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    public delegate void mydel11(int a, int b);
+    public delegate int mydelegate1(int a);
+    internal class LambdaFun_delegate
+    {
+        static void Main(string[] args)
+        {
+            mydel11 d = (x, y) =>
+            {
+                Console.WriteLine("Add " + (x + y));
+            };
+
+
+            mydel11 d2 = (x, y) => Console.WriteLine("Add " + (x + y));
+            d2(10, 20);
+
+            mydelegate1 d3 = a => (a*a);
+            int f1=d3(10);
+            Console.WriteLine("square "+f1);
+
+        }
+    
+       
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    class SortedListExample
+    {
+        static void Main(string[] args)
+        {
+            SortedList<String, int> sl = new SortedList<string, int>();
+            sl.Add("Ketaki",90);
+            sl.Add("Aditya",50);
+            sl.Add("Amit", 50);
+            sl.Add("Sonam", 50);
+
+            foreach(KeyValuePair<String, int> k in sl)
+            {
+                Console.WriteLine(k.Key+"====>"+k.Value);
+            }
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    class StudEx :IComparable<StudEx>
+    {
+        int id;
+        string nm;
+        int marks;
+
+        public StudEx(int id, string nm, int marks)
+        {
+            this.Id = id;
+            this.Nm = nm;
+            this.marks = marks;
+        }
+
+        public int Id { get => id; set => id = value; }
+        public string Nm { get => nm; set => nm = value; }
+        public int Marks { get => marks; set => marks = value; }
+
+
+
+        public int CompareTo(StudEx? other)
+        {
+            return this.marks.CompareTo(other.marks);
+        }
+
+        public override string ToString()
+        {
+            return $"  ID: {id} Name: {nm}  Marks: {marks}";
+        }
+    }
+    class SortedList_practice
+    {
+        static void Main(string[] args)
+        {
+            SortedList<StudEx, string> st = new SortedList<StudEx, string>();
+
+            st.Add(new StudEx(1, "Ketaki", 96), "Deepa");
+            st.Add(new StudEx(2, "Sayali", 87), "Kirti");
+            st.Add(new StudEx(3, "Sonali", 60), "Kalyani");
+
+            foreach (KeyValuePair<StudEx, string> s1 in st)
+                Console.WriteLine(s1.Key + "," + s1.Value);
+
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Collections;
+
+namespace Advance
+{
+    class Student1 : IComparable<Student1>
+    {
+        int id;
+        string nm;
+        int percentage;
+
+        public Student1(int id, string nm, int percentage)
+        {
+            this.Id = id;
+            this.Nm = nm;
+            this.Percentage = percentage;
+        }
+
+        public int Id { get => id; set => id = value; }
+        public string Nm { get => nm; set => nm = value; }
+        public int Percentage { get => percentage; set => percentage = value; }
+
+        public int CompareTo(Student1? other)
+        {
+
+            // without comapre method 
+
+
+            //if (this.percentage > other.percentage)
+            //    return 1;
+            //else if (this.percentage < other.percentage)
+            //    return -1;
+            //else
+            //    return 0;
+
+            // Using comapre method
+            //return this.percentage.CompareTo(other.percentage);
+
+
+            return this.nm.CompareTo(other.nm); // with name sort
+
+            if (this.percentage == other.percentage)
+                return this.nm.CompareTo(other.nm);
+            else
+                return this.percentage.CompareTo(other.percentage);
+        }
+        public override string ToString()
+        {
+            return $"  ID: {id} Name: {nm}  Percentage: {percentage}";
+        }
+    }
+
+    class SortedList_ICompare
+    {
+        static void Main(string[] args)
+        {
+            SortedList<Student1, string> st = new SortedList<Student1, string>();
+            st.Add(new Student1(1, "Yogesh", 96), "Csharp");
+            st.Add(new Student1(2, "Dhiraj", 90), "Java");
+            st.Add(new Student1(3, "Sanket", 92), "Csharp");
+            st.Add(new Student1(4, "Pranav", 90), "Csharp");
+
+            foreach (KeyValuePair<Student1, string> s1 in st)
+                Console.WriteLine(s1.Key + "," + s1.Value);
+
+        }
+    }
+    
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class ReturnStatementQuesForException
+    {
+        static int Divide(int a, int b)
+        {
+            
+            try
+            {
+                Console.WriteLine(" in division ");
+                return a / b;
+            }
+            catch(DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally //executed irrespective of error
+            {
+                Console.WriteLine("in finally");
+            }
+            return 0;
+          
+        }
+
+        static void Main1(string[] args)
+        {
+            Console.WriteLine("main starts");
+            int result= Divide(10, 2);
+            Console.WriteLine("Answer : "+result);
+            Console.WriteLine("main ends");
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections;
+
+
+namespace Advance
+{
+    class QueueExample
+    {
+        static void Main(string[] args)
+        {
+            Queue queue = new Queue();
+            queue.Enqueue(100);
+            queue.Enqueue("hii");
+            queue.Enqueue("Hello");
+            queue.Enqueue(250);
+
+            Console.WriteLine(queue);
+
+            Console.WriteLine(queue.Dequeue());//remove
+            Console.WriteLine(queue.Peek());//return start point
+            foreach(var item in queue)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+
+
+namespace Advance
+{
+   
+    class Predefine_3_Delegate
+    {
+        static void Add(int a, int b)
+        {
+            Console.WriteLine("Sum " + (a + b));
+        }
+
+        static int Factorial(int n)
+        {
+            int fact = 1;
+            for(int i=1;i<=n;i++)
+            {
+                fact = fact * i;
+            }
+            return fact;
+        }
+
+        static bool IsEven(int num)
+        {
+            if (num % 2 == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        static void Main(string[] args)
+        {
+
+            Action<int, int> a1 = Add;
+            a1(10, 20);
+
+            Func<int, int> f1 = Factorial;
+            int result=f1(5);
+            Console.WriteLine("Factorial "+result);
+
+            Predicate<int> a2 = IsEven;
+            bool isPresent=a2(10);
+            Console.WriteLine(isPresent);
+            
+        }
+    }
+}
+
+
+using System;
+using System.Collections;
+
+
+namespace Advance
+{
+    internal class TestPerson
+    {
+        string name;
+        ArrayList hobbies;
+
+        public TestPerson(string name, ArrayList hobbies)
+        {
+            this.name = name;
+            this.hobbies = hobbies;
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public ArrayList Hobbies
+        {
+            get { return hobbies; }
+            set { hobbies = value; }
+        }
+
+    }
+
+    class Person
+    {
+        static void Main(string[] args)
+        {
+            ArrayList plist = new ArrayList();
+            do
+            {
+                Console.WriteLine("enter name");
+                string name = Console.ReadLine();
+                Console.WriteLine("Enter numner of hobbies you have");
+                int c = int.Parse(Console.ReadLine());
+                ArrayList hobbieslist = new ArrayList();
+                for (int i = 1; i < c; i++)
+                {
+                    Console.WriteLine($" {name} enter ur hobby");
+                    string h = Console.ReadLine();
+                    hobbieslist.Add(h);
+                }
+
+                TestPerson p = new TestPerson(name, hobbieslist);
+                plist.Add(p);
+
+                Console.WriteLine("Do you want to add one more person object yes/no");
+                string choice = Console.ReadLine().ToLower();
+
+                if (choice == "no")
+                    break;
+            } while (true);
+        }
+    }
+}
+
+
+using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class TestOrder
+    {
+        int orderid;
+        string customer;
+        string city;
+        ArrayList items;
+
+        public TestOrder(int orderid, string customer, string city, ArrayList items)
+        {
+            this.Orderid = orderid;
+            this.Customer = customer;
+            this.City = city;
+            this.Items = items;
+        }
+
+        public int Orderid { get => orderid; set => orderid = value; }
+        public string Customer { get => customer; set => customer = value; }
+        public string City { get => city; set => city = value; }
+        public ArrayList Items { get => items; set => items = value; }
+    }
+
+    class Order
+    {
+        static void Main(string[] args)
+        {
+            ArrayList orderlist = new ArrayList();
+            for(int i=1; i<=5; i++)
+            {
+                Console.WriteLine("Enter orderid,name,city");
+                int ordrid = Convert.ToInt32(Console.ReadLine());
+                string cname = Console.ReadLine();
+                string city1=Console.ReadLine();
+
+                Console.WriteLine("Enter how many items you want to ordered");
+                int c = Convert.ToInt32(Console.ReadLine());
+
+                ArrayList itemlist=new ArrayList();
+                for(int j=1; j<=c; j++)
+                {
+                    Console.WriteLine("Add {j} item in ur order");
+                    string item = Console.ReadLine();
+                    itemlist.Add(item);
+                }
+                orderlist.Add(new TestOrder(ordrid, cname, city1, itemlist));
+                
+
+            } 
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class NestedTryCatch
+    {
+        static void Main1(string[] args)
+        {
+            Console.WriteLine("Enter your name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter your age");
+            try
+            {
+
+                int age = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Name : " + name + " Age : " + age);
+                Console.WriteLine("Character at 5th position " + name[4]);
+                try
+                {
+                    Console.WriteLine("Enter 2 number");
+                    int a = int.Parse(Console.ReadLine());
+                    int b = int.Parse(Console.ReadLine());
+                    Console.WriteLine("division : " + (a / b));
+                }
+                catch(DivideByZeroException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+               
+
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Enter age in numeric");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SystemException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Collections;
+
+
+namespace Advance
+{
+    class List_Dictionary__GenericClass
+    {
+        static void Main(string[] args)
+        {
+            List<String> l1 = new List<string>();
+
+            l1.Add("hi");
+            l1.Add("hello");
+            l1.Add("C#");
+            
+            Console.WriteLine(l1[0]);
+
+            List<Stud> s1 = new List<Stud>();//stud type of data 
+
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+            dict.Add(1, "Om");
+            dict.Add(2, "ram");
+            dict.Add(3, "Hi");
+
+            Console.WriteLine(dict.ContainsKey(3));
+            Console.WriteLine(dict.ContainsValue("ram")) ;
+
+            foreach(KeyValuePair<int,string> k in dict)
+                Console.WriteLine(k.Key + "==>"+k.Value);
+
+            foreach(int a in dict.Keys)
+                Console.WriteLine(a + "==>" + dict[a]);
+
+        }
+    }
+}
+
+
+using System;
+
+
+namespace Advance
+{
+    class Increase_Decrease_Bouncy_Number
+    {
+        //increasing number
+        //169
+        //831
+        //182-Bouncy
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter Number");
+            int n = int.Parse(Console.ReadLine());
+            //n = 1689
+
+
+            bool isincreasing = true;
+            bool isdecreasing = true;
+
+            int last = n % 10;//9
+            n = n / 10;//n = 168
+
+            while (n > 0)
+            {
+                int prev = n % 10;//1
+                if (prev > last)
+                {
+                    isincreasing = false;
+                }
+                if (prev < last)
+                {
+                    isdecreasing = false;
+                }
+                n = n / 10;//0
+                last = prev;//last = 1
+            }
+            if (isdecreasing == true)
+                Console.WriteLine("Number is Decreasing");
+            else if (isincreasing == true)
+                Console.WriteLine("Number is Increasing");
+            else
+                Console.WriteLine("Number is Bouncy");
+        }
+    }
+}
+using System;
+using System.Collections;
+
+
+namespace Advance
+{
+    class Student
+    {
+        int id;
+        String name;
+
+        public Student(int id, string name)
+        {
+            this.id = id;
+            this.name = name;
+        } 
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            Student stud = (Student)obj;
+            return id == stud.id &&name == stud.name;
+        }
+
+        public override int GetHashCode()
+        {
+            return id;
+        }
+
+        public override string ToString()
+        {
+            return $"{id} , {name}";
+        }
+
+        //static void Main(string[] args)
+        //{
+        //    Student s1 = new Student(1, "Ketaki");
+
+        //}
+    }
+        class HAshtTable_HAshcode_Equals
+    {
+        static void Main(string[] args)
+        {
+            Hashtable ht = new Hashtable();
+           
+            ht.Add(new Student(1, "priya"), "priya@gmail.com");
+            ht.Add(new Student(2, "priya"), "priya@gmail.com");
+            ht.Add(new Student(3, "priya"), "priya@gmail.com");
+            ht.Add(new Student(4, "priya"), "priya@gmail.com");
+
+
+            foreach (var k in ht.Keys)
+            {
+                Console.WriteLine(k + "--->" + ht[k]);
+            }
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Advance
+{
+    class FileStreamReader_ex
+    {
+        static void Main(string[] args)
+        {
+            using (StreamReader sr =new StreamReader("G://b.txt"))
+            {
+                //string s = sr.ReadLine();
+                //while(s!=null)
+                //{
+                //    Console.WriteLine(s);
+                //    s = sr.ReadLine();
+                //}
+
+                //OR
+                
+                Console.WriteLine(sr.ReadToEnd());
+            }
+        }
+    }
+}
+
+using System;
+using System.Collections;
+
+
+namespace Advance
+{
+    internal class ArrayListEx
+    {
+        static void Main(string[] args)
+        {
+            ArrayList al= new ArrayList();
+            al.Add(200);
+            Console.WriteLine("Capacity of arrayList : "+al.Capacity);//gives the arraylist capacity
+            al.Add("ketaki");
+            al.Add(900);
+            al.Add(245);
+            al.Add(677);
+            al.Add(200);
+            al.Add(543);
+            al.Insert(1,"shinde");
+           
+            Console.WriteLine("Count " + al.Count); //gives count of how many elements in arrayList
+           
+            for (int i = 0; i < al.Count; i++)
+            {
+                Console.WriteLine(al[i]);
+            }
+            Console.WriteLine("***************************");
+
+            //remove element
+            al.Remove(200); //here it will remove 1st occurence of 200
+
+            al.RemoveAt(2); //removes elements from 2nd position of index
+
+            Console.WriteLine("index of ketaki "+al.IndexOf("ketaki"));
+
+            al[0] = 100; //update the value of 1st index element
+            Console.WriteLine("Capacity of arrayList : " + al.Capacity); //gives the arraylist capacity
+            //print ArrayList
+            foreach(var i in al)
+            {
+                Console.WriteLine(i);
+            }
+
+           
+           
+
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    class Stud
+    {
+        public string Name { get; set; }
+        
+    }
+    internal class AddArray_And_Exception
+    {
+        static int c;
+        static string name;
+        static void Main1(string[] args)
+        {
+            Console.WriteLine(c);
+
+            Stud[] sarr = new Stud[5];
+            Console.WriteLine(sarr[0].Name);//  System.NullReferenceException
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class Autoboxing_Unboxing
+    {
+        static void Main1(string[] args)
+        {
+            int a = 10;
+            object ob = a; //autoboxing converting primitive to object automatically
+            int d=(int)ob;  //unboxing object to primitive
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    class Book: IComparable<Book>
+    {
+        int bookid;
+        string bname;
+        int price;
+
+        public Book(int bookid, string bname, int price)
+        {
+            this.Bookid = bookid;
+            this.Bname = bname;
+            this.Price = price;
+        }
+
+        public int Bookid { get => bookid; set => bookid = value; }
+        public string Bname { get => bname; set => bname = value; }
+        public int Price { get => price; set => price = value; }
+
+        public int CompareTo(Book? other)
+        {
+            return this.bname.CompareTo(other.bname);
+
+            if (this.price==other.price)
+            {
+                this.bname.CompareTo(other.bname);
+            }
+            else
+            {
+                this.price.CompareTo(other.price);
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{bookid} , {bname}, {price}";
+
+        }
+    }
+    class Book_SortedList
+    {
+        static void Main(string[] args)
+        {
+            SortedList<Book, String> sl = new SortedList<Book, string>();
+            sl.Add(new Book(1, "Alchemist", 250), "Paulo Coelho");
+            sl.Add(new Book(2, "Ikigai", 150), "Gracia");
+            sl.Add(new Book(3, "Frankeinstine", 150), "Marry");
+            sl.Add(new Book(4, "Michelle obama", 450), "Michelle obama");
+
+            foreach(KeyValuePair<Book,string> s1 in sl)
+                Console.WriteLine(s1.Key + "," + s1.Value);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+
+
+namespace Advance
+{
+    class CallBack_delegate
+    {
+        static void greet(string name)
+        {
+            Console.WriteLine(name+", Welcome to csharp");
+        }
+
+        static void m1(string name,Action<string> funcCall)
+        {
+            Console.WriteLine("Welcome to Thinkquotient");
+            funcCall(name);
+        }
+        static void Main(string[] args)
+        {
+            m1("Ketaki", greet);
+
+        }
+    }
+}
+
+
+using System;
+using System.Collections;
+
+
+namespace Advance
+{
+    class CountEle_usingHashtable
+    {
+        static void Main(string[] args)
+        {
+            ArrayList al = new ArrayList()
+            {
+                "Sun","Mon","Tue","Wed","Sun","Mon","Tue","Sun","Sat",
+            };
+
+            //string str = "Abhishekh";
+            //char[] ch= str.ToCharArray();
+
+            Hashtable ht = new Hashtable();
+
+            foreach(dynamic data in al)
+            {
+                if(ht.ContainsKey(data))
+                {
+                    int value = (int)ht[data];
+                    ht[data] = value+1;
+                }
+                else
+                {
+                    ht.Add(data, 1);    
+                }
+            }
+
+            foreach (DictionaryEntry d in ht)
+            {
+                Console.WriteLine(d.Key + "--->" + d.Value);
+            }
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    class CustomExceptionExample:ApplicationException
+    {
+        //Overriding the Message property
+        public override string Message               
+        {
+            get
+            {
+                return "divisor cannot be odd number";
+            }
+        }
+    }
+    class Program
+    {
+        static void Main1(string[] args)
+        {
+            int x, y, z;
+            Console.WriteLine("Enter two number:");
+            x = int.Parse(Console.ReadLine());
+            y = int.Parse(Console.ReadLine());
+            try
+            {
+                if (y % 2 > 0)
+                {
+                    //OddNumberException ONE = new OddNumberException();
+                    //throw ONE;
+                    throw new CustomExceptionExample();
+                }
+                z = x / y;
+                Console.WriteLine(z);
+            }
+            catch (CustomExceptionExample one)
+            {
+                Console.WriteLine(one.Message);
+            }
+            Console.WriteLine("End of the program");
+            
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+
+
+namespace Advance
+{
+    public delegate void mydelegate(int a, int b);
+    public delegate void mydel(string msg);
+    
+    class DelegateExample
+    {
+        public static void Add(int x, int y)
+        {
+            Console.WriteLine("Sum " + (x + y));
+        }
+        void Greet(string msg)
+        {
+            Console.WriteLine("Welcome " + msg);
+        }
+
+        public void Product(int x, int y)
+        {
+            Console.WriteLine("Product "+(x*y));
+        }
+        static void Main(String[] args)
+        {
+            DelegateExample t = new DelegateExample();
+            mydelegate d1 = Add;
+            mydel d2 = t.Greet;
+
+            //single cast delegate
+            //d1.Invoke(10,12);
+            d1(12, 10);
+            d2("Ketaki");
+
+            //multicast delegate
+            mydelegate d = t.Product;
+            d = d + Add;
+            d(12, 9);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class ExceptionAtMethod
+    {
+        static void Divide(int a, int b)
+        {
+            Console.WriteLine("division : " + a / b);
+        }
+
+        static void Main1(string[] args)
+        {
+            Console.WriteLine("Main starts");
+            try
+            {
+                Divide(10, 0);
+            }
+            catch(DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.WriteLine("Main ends");
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class ExceptionTryCatch
+    {
+        static void Main1(string[] args)
+        {
+            Console.WriteLine("Enter your name");
+            string name=Console.ReadLine();
+            Console.WriteLine("Enter your age");
+            try
+            {
+                
+                int age = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Name : " + name + "age : " + age);
+                Console.WriteLine("Character at 5th position " + name[4]);
+                Console.WriteLine("Enter 2 number");
+                int a = int.Parse(Console.ReadLine());
+                int b = int.Parse(Console.ReadLine());
+                Console.WriteLine("division : " + (a / b));
+
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Enter age in numeric");
+            }
+            catch(IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch(SystemException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+ 
+            for(int i=1;i<=5;i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advance
+{
+    internal class expgm
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[4] { 1, 5, 4, 6 };
+
+            // 4,6,3,1,5
+            // 10,20,30,40
+
+            int size = arr.Length ;
+            int counter = 0,temp;
+
+            for(int i=0,j=size/2; i< size/2;i++,j++)
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+             
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Advance
+{
+    class FileHandling_2
+    {
+        static void Main(string[] args)
+        {
+            using(StreamWriter sw =new StreamWriter("G://b.txt",true))
+            {
+                sw.WriteLine("Hello Welcome To Csharp");
+                sw.WriteLine("Bye Bye");
+            }
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Advance
+{
+    class FileHandling_Example
+    {
+        static void Main(string[] args)
+        {
+            FileStream f1 = null;
+            try
+            {
+                f1 = new FileStream("G://a.txt", FileMode.CreateNew, FileAccess.Write);
+                f1.WriteByte(65);
+                f1.WriteByte(66);
+                f1.WriteByte(67);
+                f1.WriteByte(68);
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                f1.Close();
+            }
+        }
+    }
+}
+
+
+using System;
+using System.Collections;
+
+
+namespace Advance
+{
+    internal class HashTableEx
+    {
+        static void Main(string[] args)
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add("Ketaki",90);
+            ht.Add("sonam",92);
+            ht.Add(23, "Raj");
+            //ht.Add(new Stud(1, "priya"), "priya@gmail.com");
+
+            Console.WriteLine("Value of key Ketaki : "+ht["Ketaki"]);
+            //update value of key
+            ht["sonam"] = 95;
+
+            //to print hashtable
+            foreach(DictionaryEntry d in ht)
+            {
+                Console.WriteLine(d.Key+" => "+d.Value);
+            }
+
+            Console.WriteLine("****************************");
+            //ht.Clear();
+            ht.Remove("Ketaki");
+
+            foreach(var k in ht.Keys)
+            {
+                Console.WriteLine(k + "--->" + ht[k]);
+            }
+
+
+            Console.WriteLine(ht.ContainsKey(876));
+            Console.WriteLine(ht.ContainsValue("Raj"));
+
+        }
+    }
+}
+
