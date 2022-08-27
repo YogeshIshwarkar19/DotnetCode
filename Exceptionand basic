@@ -1,0 +1,2614 @@
+
+
+using System;
+
+// eNCAPSUlation
+
+
+
+//class EncapulateTest
+//{
+//    private double length;
+//    private double breathe;
+//    public void Accept()
+//    {
+//       Console.WriteLine("Enter Length and Breath");
+//        length = double.Parse(Console.ReadLine());
+//        breathe = double.Parse(Console.ReadLine());
+//    }
+//    public double GetArea()
+//    {
+//        return length * breathe;
+//    }
+//    public void Display()
+//    {
+//        Console.WriteLine("Area Of Rectangle" + GetArea());
+//    }
+//}
+//class Rectangle
+//{
+//    static void Main(string[] args)
+//    {
+//        EncapulateTest e = new EncapulateTest();
+//        e.Accept();
+//        e.Display();
+//    }
+//}
+
+
+
+//ABstraction
+
+
+//abstract class Animal
+//{
+//   public  abstract  void sound();
+   
+//}
+
+//class Dog:Animal
+//{
+//    public override  void sound()
+//    {
+//        Console.WriteLine("Sound of Dog");
+//    }
+   
+//}
+
+
+
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        Dog d = new Dog();
+//        d.sound();
+//    }
+//}
+
+
+
+//Prime number
+
+
+//class PrimeTest
+//{
+//    static void Main(string[] args)
+//    {
+//        Console.WriteLine("Enter number");
+//        int num = int.Parse(Console.ReadLine());
+//        bool Ispresent = true;
+//        for(int i=2;i<=num/2;i++)
+//        {
+//            if(num%i==0)
+//            {
+//                Ispresent = false;
+//                break;
+//            }
+//        }
+//        if(Ispresent==true)
+//        {
+//            Console.WriteLine("number is Prime ");
+//        }
+//        else
+//        {
+//            Console.WriteLine("number is not prime");
+//        }
+//    }
+//}
+
+
+//Fibonnacci seris
+
+//class Fibo
+//{
+//    static void Main(string[] args)
+//    {
+//        int f = 0, f1 = 1, f2 = 0;
+//        Console.WriteLine("Enter Number");
+//        int num = int.Parse(Console.ReadLine());
+//        Console.WriteLine(f+" "+f1);
+//        for (int i = 1; i <=num ; i++)
+//        {
+//            f2 = f + f1;
+//            f = f1;
+//            f1 = f2;
+//            Console.WriteLine(f2);
+//        }
+       
+//    }
+//}
+
+
+
+// Factorial
+
+//class Facto
+//{
+//    static void Main(string[] args)
+//    {
+//        int f = 1;
+//        Console.WriteLine("Enter number");
+//        int num = int.Parse(Console.ReadLine());
+//        for(int i=1;i<=num;i++)
+//        {
+//            f = f * i;
+//        }
+//        Console.WriteLine("Factoral of given number is="+f);
+//    }
+//}
+
+
+
+// Factorial using Recursion
+
+//class Facto
+//{
+//    public int Fact(int n)
+//    {
+//        if(n==1)
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            return n * Fact(n - 1);
+//        }
+      
+//    }
+//    static void Main(string[] args)
+//    {
+//        Facto f = new Facto();
+//        int result = f.Fact(5);
+//        Console.WriteLine(result);
+
+//    }
+//}
+
+
+// Method Overloading
+
+//class MethdoOverloading
+//{
+//    public int Addition(int a,int b)
+//    {
+//        return a + b;
+//    }
+//    public double Addition(double a,double b)
+//    {
+//        return a + b;
+//    }
+//    public int Addition(int a,int b,int c)
+//    {
+//        return a + b + c;
+//    }
+
+//    static void Main(string[] args)
+//    {
+//        MethdoOverloading m = new MethdoOverloading();
+//        int result = m.Addition(23, 34);
+//     double result1 = m.Addition(2.4, 3.6);
+//        int result2 = m.Addition(23, 34,66);
+
+//        Console.WriteLine(result);
+//        Console.WriteLine(result1);
+//        Console.WriteLine(result2);
+
+
+//    }
+//}
+
+
+// Method overriding
+
+//class Addition
+//{
+//   public int a;
+//  public   int b;
+  
+
+//    public Addition(int a,int b)
+//    {
+//        this.a = a;
+//        this.b = b;
+//    }
+//    public virtual int Calaculate()
+//    {
+//        return a + b;
+//    }
+//    public void Display()
+//    {
+//        Console.WriteLine("Addition"+Calaculate());
+//    }
+//}
+//class Addition1:Addition
+//{
+//    public   Addition1(int a,int b):base(a,b)
+//    {
+//        this.a = a;
+//        this.b = b;
+//    }
+//    public override int Calaculate()
+//    {
+//        return a + b;
+
+//    }
+//    public void Display()
+//    {
+//        Console.WriteLine("Add"+Calaculate());
+//    }
+
+//}
+//class Demo
+//{
+//    static void Main(string[] args)
+//    {
+//        Addition a = new Addition(23,67);
+//        a.Calaculate();
+//        a.Display();
+
+
+
+//        Addition1 a1 = new Addition1(23, 77);
+//        a1.Calaculate();
+//        a1.Display();
+//    }
+//}
+
+
+
+
+
+// Interface
+
+//interface IProgram
+//{
+//  void Sound();
+//}
+
+//class Cow:IProgram
+//{
+    
+//    public void Sound()
+//    {
+//        Console.WriteLine("Sound ......");
+//    }
+//}
+//class Demo
+//{
+//    static void Main(string[] args)
+//    {
+//        Cow c = new Cow();
+//        c.Sound();
+//    }
+//}
+// See https://aka.ms/new-console-template for more information
+// Palindrom 
+
+//class Palind
+//{
+//    static void Main(string[] args)
+//    {
+//        string str1 = "";
+//        Console.WriteLine("Enter string");
+//        str1 = Console.ReadLine();
+
+//        string rev = "";
+//        for (int i = str1.Length - 1; i >= 0; i--)
+//        {
+//            rev = rev + str1[i];
+//        }
+
+//        if (rev == str1)
+//            Console.WriteLine("string is palindrom ");
+//        else
+//            Console.WriteLine("string is Not palindrom");
+
+//    }
+//}
+
+
+// Prime or not number
+//class Primenum
+//{
+//    static void Main(string[] args)
+//    {
+//        int num;
+//        bool Isavailabe = true;
+//        Console.WriteLine("Enter the number");
+//        num = Convert.ToInt32(Console.ReadLine());
+//        for (int i = 2; i < num; i++)
+//        {
+//            if(num%i==0)
+//            {
+//                Console.WriteLine(num);
+//              Isavailabe=false;
+//                break;
+//            }
+//        }
+//        if(Isavailabe)
+//        {
+//            Console.WriteLine("number is Prime");
+//        }
+//        else
+//        {
+//            Console.WriteLine("number is not Prime");
+//        }
+//    }
+//}
+
+
+
+
+// Anagram or not
+
+//class Anagramstr
+//{
+//    static void Main(string[] args)
+//    {
+//        Console.WriteLine("Enter 1st string");
+//        string str1 = Console.ReadLine();
+//        Console.WriteLine("Enter 2nd string");
+//        string str2 = Console.ReadLine();
+
+//        string st1 = str1.ToUpper();
+//        string st2 = str2.ToUpper();
+
+//        char[] ch1 = st1.ToCharArray();
+//        char[] ch2 = st2.ToCharArray();
+
+//        Array.Sort(ch1);
+//        Array.Sort(ch2);
+
+
+//        Console.WriteLine(string.Join(" ", ch1));
+//        Console.WriteLine(string.Join(" ", ch2));
+
+
+//        string s1 = new string(ch1);
+//        string s2 = new string(ch2);
+
+//        if(s1==s2)
+//        {
+//            Console.WriteLine("String is anagram");
+//        }
+//        else
+//        {
+//            Console.WriteLine("String is not anagram");
+//        }
+//    }
+//}
+
+// count co prime number
+//class Coprimec
+//{
+//    static void Main(string[] args)
+//    {
+//        int a;
+//        Console.WriteLine("Enter number");
+//        a = Convert.ToInt32(Console.ReadLine());
+//        int count = 0;
+//        for (int i = 1; i <a; i++)
+//        {
+//            int c = 0;
+//            for (int j = 1; j < i; j++)
+//            {
+//                if(a%j==0 && i%j==0)
+//                {
+//                    c++;
+
+//                }
+//            }
+//            if(c==1)
+//            {
+//               Console.WriteLine( "co prime number count is="+a+" "+i+" ");
+//                count++; 
+//            }
+
+//        }
+//        Console.WriteLine("////////////");
+//        Console.WriteLine("Count of coprime is"+count);
+//    }
+//}
+
+
+
+// Longest Array 
+
+//class Longest
+//{
+//    static void Main(string[] args)
+//    {
+//      int[] arr = new int[] {  0, 1, 0, 1, 0, 0, 1, 0};
+//        int zeros = 0;
+//        int ones = 0;
+//        int max = 0;
+//        for (int i = 0; i <arr. Length; i++)
+//        {
+//            for (int j = i; j < arr.Length; j++)
+//            {
+//                if (arr[j]==0)
+//                {
+//                    zeros++;
+//                }
+//                else
+//                {
+//                    ones++;
+//                }
+//                if(ones==zeros)
+//                {
+//                    if(max<j-i+1)
+//                    {
+//                        max = j - i + 1;
+//                    }
+//                }
+//            }
+//        }
+//        Console.WriteLine(max);
+//    }
+//}
+
+
+
+// Reverse Without for Loop
+
+
+//class Reversstri
+//{
+//    static void Main(string[] args)
+//    {
+//        string str = "Hello Dotnet";
+//        char[] ch = str.ToCharArray();
+
+//        Array.Reverse(ch);
+
+//        string str1 = new string(ch);
+//        Console.WriteLine(str1);
+//    }
+//}
+
+
+
+// Sum of all Elemnets in an array
+
+//class Sumele
+//{
+//    static void Main(string[] args)
+//    {
+//        int[] arr = { 2, 5, 4, 6, 8, 6 };
+//        int sum = 0;
+//        for (int i = 0; i <arr.Length; i++)
+//        {
+//            sum = sum + arr[i];
+//        }
+//        Console.WriteLine( sum);
+//    }
+//}
+
+
+
+// Arithmatic progression
+
+//class Arith
+//{
+//    static void Main(string[] args)
+//    {
+//        Console.WriteLine("Enter 2nd Number");
+//        int num1 = Convert.ToInt32(Console.ReadLine());
+//        Console.WriteLine("Enter 3rd Number");
+//        int num2 = Convert.ToInt32(Console.ReadLine());
+
+//        int different = 4;
+//        int nth = 7;
+//        int first = num1 - different;
+//        int AP = first + (nth - 1) * 4;
+//        Console.WriteLine(AP);
+//    }
+//}
+
+
+
+
+
+
+//string str = "nitin";
+//string rev = "";
+//for (int i = str.Length - 1; i >= 0; i--)
+//{
+//    rev = rev + str[i];
+//}
+
+//if (rev == str)
+//    Console.WriteLine("string is palindrom ");
+//else
+//    Console.WriteLine("string is Not palindrom");
+
+
+
+//// coprime pair
+
+//int a = 25;
+//for (int i = 1; i <= a; i++)
+//{
+//    int c = 0;
+//    for (int j = 1; j <= i; j++)
+//    {
+//        if (a % j == 0 && i % j == 0)
+//        {
+//            c++;
+//        }
+//    }
+//    if (c == 1)
+//    {
+//        Console.WriteLine($"coprime pair is {i} {a}");
+//    }
+//}
+
+
+//// Coprime or not
+//int a = 23;
+//int b = 18;
+//int c = 0;
+//for (int i = 1; i <= b; i++)
+//{
+//    if (a % i == 0 && b % i == 0)
+//    {
+//        Console.WriteLine(i);
+//        c++;
+//    }
+//}
+//if (c == 1)
+//{
+//    Console.WriteLine("number is coprime");
+//}
+//else
+//{
+//    Console.WriteLine("Number is not coprime");
+//}
+
+
+//// Factorial using reursion
+
+//class Recursion
+//{
+//    static int Factorial(int n)
+//    {
+//        if (n == 1)
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            return n * Factorial(n - 1);
+//        }
+//    }
+//    static void Main(string[] args)
+//    {
+//        int ans = Factorial(6);
+//        Console.WriteLine(ans);
+//    }
+//}
+
+
+//// Common Factorial of two digit
+
+//int a = 12;
+//int b = 18;
+//for (int i = 1; i <= a; i++)
+//{
+//    if (a % i == 0 && b % i == 0)
+//    {
+//        Console.WriteLine(i);
+//    }
+//}
+
+
+//// Count common Factorial og two digit
+
+//int a = 12;
+//int b = 18;
+//int c = 0;
+//for (int i = 1; i <= a; i++)
+//{
+//    if (a % i == 0 && b % i == 0)
+//    {
+//        Console.WriteLine(i);
+//        c++;
+//    }
+//}
+//Console.WriteLine("///////////");
+//Console.WriteLine("............");
+//Console.WriteLine(c);
+
+
+//// Arithmatic Progression
+
+//int second = 5;
+//int third = 9;
+//int differnce = 4;
+//int nth = 8;
+//int first = second - differnce;
+//int Ap = first + (nth - 1) * 4;
+//Console.WriteLine(Ap);
+
+
+//// Longest Array
+
+//int[] arr = { 1, 0, 1, 0, 1, 1, 0, 1 };
+//int ones = 0, zeros = 0;
+//int max = 0;
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    zeros = 0;
+//    ones = 0;
+//    for (int j = i; j < arr.Length; j++)
+//    {
+//        if (arr[j] == 0)
+//        {
+//            zeros++;
+//        }
+//        else
+//        {
+//            ones++;
+//        }
+//        if (ones == zeros)
+//        {
+//            if (max < j - i + 1)
+//            {
+//                max = j - i + i;
+//            }
+//        }
+//    }
+//}
+//Console.WriteLine(max);
+
+
+
+// Sum of conjecative elemnt in an array
+
+//int[] arr = new int[] { 4, 2, 1, 6, 2, 9,5,8 };
+
+//int sum = 0;
+//for (int i = 0; i < arr.Length; i=i+2)
+//{
+//    sum = arr[i] + arr[i + 1];
+//    Console.Write(sum+" ");
+//}
+
+
+
+// Fibonacci series
+
+//int a = 0, b = 1, term = 0;
+
+//Console.WriteLine(a + "" + b);
+
+//for (int i = 1; i <= 8; i++)
+//{
+
+//    term = a + b;
+
+//    a = b;
+//    b = term;
+//    Console.WriteLine(term);
+
+//}
+
+
+
+
+//fibonnacci series
+
+//int a = 0, b = 1, term = 0;
+//for (int i = 1; i <= 9; i++)
+//{
+
+//    term = a + b;
+
+//    a = b;
+//    b = term;
+
+
+//}
+//Console.WriteLine(term);
+
+
+
+
+//Fibonacci seris
+using System;
+class Fibo
+{
+    static int Fibo1(int n)
+    {
+        int a = 0, b = 1;
+        int c;
+        for (int i = 1; i <= n; i++)
+        {
+            if (i <= n-1 )
+            {
+                Console.WriteLine(a);
+                c = a + b;
+                a = b;
+                b = c;
+
+            }
+        }
+        return a;
+    }
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter term you want");
+        int n = Convert.ToInt32(Console.ReadLine());
+        int term = Fibo1(n);
+        Console.WriteLine(term);
+    }
+}
+
+
+
+string str = "nitin";
+string rev = "";
+for (int i = str.Length - 1; i >= 0; i--)
+{
+    rev = rev + str[i];
+}
+
+if (rev == str)
+    Console.WriteLine("string is palindrom ");
+else
+    Console.WriteLine("string is Not palindrom");
+
+
+
+// coprime pair
+
+int a = 25;
+for (int i = 1; i <= a; i++)
+{
+    int c = 0;
+    for (int j = 1; j <= i; j++)
+    {
+        if (a % j == 0 && i % j == 0)
+        {
+            c++;
+        }
+    }
+    if (c == 1)
+    {
+        Console.WriteLine($"coprime pair is {i} {a}");
+    }
+}
+
+
+// Coprime or not
+int a = 23;
+int b = 18;
+int c = 0;
+for (int i = 1; i <= b; i++)
+{
+    if (a % i == 0 && b % i == 0)
+    {
+        Console.WriteLine(i);
+        c++;
+    }
+}
+if (c == 1)
+{
+    Console.WriteLine("number is coprime");
+}
+else
+{
+    Console.WriteLine("Number is not coprime");
+}
+
+
+// Factorial using reursion
+
+class Recursion
+{
+    static int Factorial(int n)
+    {
+        if (n == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return n * Factorial(n - 1);
+        }
+    }
+    static void Main(string[] args)
+    {
+        int ans = Factorial(6);
+        Console.WriteLine(ans);
+    }
+}
+
+
+// Common Factorial of two digit
+
+int a = 12;
+int b = 18;
+for (int i = 1; i <= a; i++)
+{
+    if (a % i == 0 && b % i == 0)
+    {
+        Console.WriteLine(i);
+    }
+}
+
+
+// Count common Factorial og two digit
+
+int a = 12;
+int b = 18;
+int c = 0;
+for (int i = 1; i <= a; i++)
+{
+    if (a % i == 0 && b % i == 0)
+    {
+        Console.WriteLine(i);
+        c++;
+    }
+}
+Console.WriteLine("///////////");
+Console.WriteLine("............");
+Console.WriteLine(c);
+
+
+// Arithmatic Progression
+
+int second = 5;
+int third = 9;
+int differnce = 4;
+int nth = 8;
+int first = second - differnce;
+int Ap = first + (nth - 1) * 4;
+Console.WriteLine(Ap);
+
+
+// Longest Array
+
+int[] arr = { 1, 0, 1, 0, 1, 1, 0, 1 };
+int ones = 0, zeros = 0;
+int max = 0;
+for (int i = 0; i < arr.Length; i++)
+{
+    zeros = 0;
+    ones = 0;
+    for (int j = i; j < arr.Length; j++)
+    {
+        if (arr[j] == 0)
+        {
+            zeros++;
+        }
+        else
+        {
+            ones++;
+        }
+        if (ones == zeros)
+        {
+            if (max < j - i + 1)
+            {
+                max = j - i + i;
+            }
+        }
+    }
+}
+Console.WriteLine(max);
+
+
+// Fiboncci series direct output
+int a = 0, b = 1, term = 0;
+
+Console.WriteLine(a + "" + b);
+
+for (int i = 1; i <= 8; i++)
+{
+
+    term = a + b;
+
+    a = b;
+    b = term;
+    Console.WriteLine(term);
+
+}
+
+
+
+
+fibonnacci series
+
+int a = 0, b = 1, term = 0;
+
+
+
+for (int i = 1; i <= 9; i++)
+{
+
+    term = a + b;
+
+    a = b;
+    b = term;
+
+
+}
+Console.WriteLine(term);
+
+// Replace all Vowel by # in a string
+
+public class Replacevoweltohash
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter The string");
+            string str = Console.ReadLine();
+            string str1 = str.ToLower();
+            char[] w = str1.ToCharArray();
+            string str2 = " ";
+            for (int j = 0; j < w.Length; j++)
+            {
+                if (w[j] == 'a' || w[j] == 'e' || w[j] == 'i' ||
+                        w[j] == 'o' || w[j] == 'u')
+                {
+                    str2 = str2 + '#';
+                }
+                else
+                {
+                    str2 = str2 + w[j];
+                }
+            }
+            Console.WriteLine(str2);
+        }
+    }
+}
+
+
+1) SUm of array Elements
+
+//Console.WriteLine("Enter the size of array");
+//int n = Convert.ToInt32(Console.ReadLine());
+//int sum = 0;
+
+//int[] arr = new int[n];
+
+//Console.WriteLine("Enter the elements of an array");
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    arr[i] = Convert.ToInt32(Console.ReadLine());
+//}
+
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    sum = sum + arr[i];
+//}
+//Console.WriteLine( "Sum of array Elements is "+sum);
+
+
+2)  sum of even number in an array
+
+//int[] arr = new int[5];
+//int sum = 0;
+//Console.WriteLine("Enter elements af an array");
+//for (int i = 0; i <arr. Length; i++)
+//{
+//    arr[i] = Convert.ToInt32(Console.ReadLine());
+//}
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    if(arr[i]%2==0)
+//    {
+//        sum = sum + arr[i];
+//    }
+//}
+//Console.WriteLine(" Sum of even number in an array  "+ sum);
+
+
+
+3) Min and Max elements of an array
+
+//int[] a = new int[] { 3, 4, 5, 6, 2 };
+//int max = a[0];
+//int min = a[0];
+
+//for (int i = 0; i < a.Length; i++)
+//{
+//    if(a[i]>max)
+//    {
+//        max = a[i];
+//    }
+//}
+//Console.WriteLine("Maximum Number of elements is:- "+max);
+//Console.WriteLine("//////////////////");
+
+//for (int i = 0; i < a.Length; i++)
+//{
+//    if(a[i]<min)
+//    {
+//        min = a[i];
+//    }
+//}
+//Console.WriteLine("Minimum Number of elements is:- "+min);
+
+
+
+4) Array in Descending order
+
+//int[] arr = new int[6];
+//Console.WriteLine("Enter the elements of an array");
+
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    arr[i] = Convert.ToInt32(Console.ReadLine());
+//}
+//Console.WriteLine(String.Join(" ",arr));
+
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    for (int j = i+1; j < arr.Length; j++)
+//    {
+//        if(arr[i]<arr[j])
+//        {
+//            int temp = arr[i];
+//            arr[i] = arr[j];
+//            arr[j] = temp;
+//        }
+//    }
+//    Console.WriteLine(arr[i]);
+//}
+//Console.WriteLine(String.Join(" ",arr));
+
+
+
+5) Reverse Array elememnts
+
+//int[] arr = new int[6];
+//Console.WriteLine("Enter the elements");
+
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    arr[i] = Convert.ToInt32(Console.ReadLine());
+//}
+//Console.WriteLine(String.Join(" ",arr));
+//Array.Reverse(arr);
+//Console.WriteLine("Reverse array is");
+
+//for (int i = 0; i < arr.Length;i++)
+//{
+//    Console.WriteLine(arr[i]);
+//}
+//Console.WriteLine(String.Join(" ", arr));
+
+
+
+6) Merge two array bt same value is not merge
+
+
+//int[] arr = new int[] { 7, 4, 3, 6, 3,7,2,1 };
+//int[] arr1 = new int[] { 10, 11, 22, 33, 10, 22,20,30,20 };
+//int[] arr2 = new int[arr.Length + arr1.Length];
+
+//int k = 0;
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    int count = 1;
+//    bool Isvisited = false;
+//    for (int j = i-1; j >=0; j--)
+//    {
+//        if(arr[i]==arr[j])
+//        {
+//            Isvisited = true;
+//            break;
+//        }
+
+//    }
+//    if(Isvisited==false)
+//    {
+
+//        for (int j = i+1; j < arr.Length; j++)
+//        {
+//            if(arr[i]==arr[j])
+//            {
+//                count++;
+//            }
+//        }
+//        if(count==1)
+//        {
+//            arr2[k] = arr[i];
+//            k++;
+//        }
+
+//    }
+
+
+//}
+
+//for (int i = 0; i < arr1.Length; i++)
+//{
+//    int count = 1;
+//    bool IsVisited = false;
+//    for (int j = i-1; j >=0; j--)
+//    {
+//        if(arr1[i]==arr1[j])
+//        {
+//            IsVisited = true;
+//            break;
+//        }
+//    }
+//    if(IsVisited==false)
+//    {
+//        for (int m = i+1; m < arr1.Length; m++)
+//        {
+//            if(arr1[i]==arr1[m])
+//            {
+//                count++;
+//            }
+//        }
+//        if(count==1)
+//        {
+//            arr2[k] = arr1[i];
+//            k++;
+//        }
+//    }
+//}
+
+//for (int i = 0; i < k; i++)
+//{
+//    Console.WriteLine(arr2[i]);
+//}
+
+
+7) Sort array in ascending order
+
+//int[] a = new int[9];
+//Console.WriteLine("Enter elements");
+//for (int i = 0; i <a.Length; i++)
+//{
+//    a[i] = Convert.ToInt32(Console.ReadLine());
+//}
+//Console.WriteLine(String.Join(" ",a));
+//Console.WriteLine("///////////////////");
+
+//for (int i = 0; i < a.Length; i++)
+//{
+//    for (int j = i+1; j <a.Length; j++)
+//    {
+//        if(a[i]>a[j])
+//        {
+//            int temp = a[i];
+//            a[i] = a[j];
+//            a[j] = temp;
+//        }
+//    }
+//    Console.WriteLine(a[i]);
+//}
+//Console.WriteLine(String.Join(" ",a));
+
+
+
+
+
+
+
+
+
+
+8) Replace elements 0's to 1's
+
+
+//int[] arr = new int[6] ;
+//Console.WriteLine("Enter elemnts");
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    arr[i] = Convert.ToInt32(Console.ReadLine());
+//}
+
+//Console.WriteLine(String.Join(" ",arr));
+//Console.WriteLine("////////////////////");
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    if(arr[i]==0)
+//    {
+//        arr[i] = 1;
+//    }
+//    Console.WriteLine(arr[i]);
+//}
+//Console.WriteLine(String.Join(" ",arr));
+
+
+
+
+
+
+
+9) Replace all Negative elements immediate left of elements square 
+
+//int[] arr =new int[10] { 2, 4, -60,8,9, 3, -34, 2, 4, -56};
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    for(int j=i-1;j>=0;j--)
+
+//    if(arr[i]<0)
+//    {
+//        arr[i] = (arr[j]) * (arr[j]); 
+//    }
+//    Console.WriteLine(arr[i]);
+//}
+
+
+
+
+
+
+10) Minimum elements in array in character format
+
+//char[] ch = new char[] { 'A', 'D', 'E', 'x', 'z', 'R' };
+
+//char min = ch[0];
+//for (int i = 0; i < ch.Length; i++)
+//{
+//    if(ch[i]<min)
+//    {
+//        min = ch[i];
+//    }
+//}
+//Console.WriteLine("Minimum elements in an array is:="+min);
+
+
+
+
+
+
+11) Unique elements in array
+
+//int[] arr = new int[6] ;
+//Console.WriteLine("Enter the array elements");
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    arr[i] = Convert.ToInt32(Console.ReadLine());
+//}
+//Console.WriteLine(String.Join(" ",arr));
+//Console.WriteLine("/////////////////");
+
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    int count = 1;
+//    bool Isvisited = false;
+//    for(int j=i-1;j>=0;j--)
+//    {
+//        if(arr[i]==arr[j])
+//        {
+//            Isvisited = true;
+//            break;
+//        }
+//    }
+//    if(Isvisited==false)
+//    {
+//        for (int k = i+1; k < arr.Length; k++)
+//        {
+//            if(arr[i]==arr[k])
+//            {
+//                count++;
+//            }
+//        }
+//        if(count==1)
+//        {
+//            Console.WriteLine(arr[i]);
+//        }
+//    }
+//}
+
+
+
+
+
+// See https://aka.ms/new-console-template for more information
+
+
+// Sum of array Elements
+
+//int[,] arr1 = new int[3, 4] { { 3, 2, 1, 5 }, { 7,3,2,1}
+//             ,{7,9,8,5}};
+//int[,] arr2 = new int[3, 4] { { 5, 3, 2, 1 }, { 8,9,4,3},
+//                       {7,3,4,2 }};
+//int[,] sum = new int[3, 4];
+
+//for (int i = 0; i < arr1.GetLength(0); i++)
+//{
+//    for(int j=0;j<arr1.GetLength(1);j++)
+//    {
+//        Console.Write(arr1[i,j]+" ");
+//    }
+//    Console.WriteLine();
+//}
+//Console.WriteLine("///////////");
+//for (int i = 0; i < arr2.GetLength(0); i++)
+//{
+//    for (int j = 0; j < arr2.GetLength(1); j++)
+//    {
+//        Console.Write(arr2[i, j]+" ");
+//    }
+//    Console.WriteLine();
+//}
+
+//Console.WriteLine("............");
+
+//for (int i = 0; i < arr1.GetLength(0); i++)
+//{
+//    for (int j = 0; j < arr1.GetLength(1); j++)
+//    {
+//        sum[i, j] = arr1[i, j] + arr2[i, j];
+//    }
+//}
+//Console.WriteLine("Sum of array elementts");
+
+//for (int i = 0; i < arr1.GetLength(0); i++)
+//{
+//    for (int j = 0; j < arr1.GetLength(1); j++)
+//    {
+//        Console.Write(sum[i, j]+" ");
+//    }
+//    Console.WriteLine();
+//}
+
+
+
+
+// Minimum array in a row
+
+//int[,] arr = new int[3, 3] { { 4, 2, 5 }, { 7, 6, 3 },
+//               { 9,7,5} };
+//for (int i = 0; i <arr.GetLength(0); i++)
+//{
+//    int min = arr[i, 0];
+//    for (int j = 0; j < arr.GetLength(1); j++)
+//    {
+//        if(min>arr[i,j])
+//        {
+//            min = arr[i, j];
+//        }
+//    }
+//    Console.WriteLine("Minimum Elements= "+min);
+//}
+
+
+
+
+// Sum of Column in an array;
+//int[,] arr = new int[3, 3] { { 4, 3, 5}, { 7,9,8},
+//                     {9,8,3 }};
+
+//for (int j = 0; j < arr.GetLength(0); j++)
+//{
+//    int sum = 0;
+//    for (int i = 0; i < arr.GetLength(0); i++)
+//    {
+
+//        sum = sum + arr[i, j];
+
+
+
+//    }
+//    Console.WriteLine(" sum =" + sum);
+//}
+
+
+// N pattern
+
+
+//int[,] arr = new int[3, 3] { { 3, 2, 1 },{ 6, 5, 7 },
+//                  { 9, 6, 7 } };
+
+//for (int i = 0; i <arr.GetLength(0); i++)
+//{
+//    for (int j = 0; j < arr.GetLength(1); j++)
+//    {
+//        if(j==0||j==arr.GetUpperBound(1)||i==j)
+
+//        {
+//            Console.Write(arr[i,j]+" ");
+//        }
+//        else
+//        {
+//            Console.Write("  ");
+//        }
+//    }
+//    Console.WriteLine();
+//}
+
+
+
+
+// Arrange non zero elements 1st and then zero
+
+//int[] arr = new int[] { 6, 4, 3, 0, 5, 2, 0,9, 7,0};
+
+//for (int i = 0; i < arr.Length; i++)
+//{
+//    if (arr[i] == 0)
+//    {
+
+
+//        for (int j = i; j < arr.Length; j++)
+//        {
+//            if (arr[j] > 0)
+//            {
+//                int temp = arr[i];
+//                arr[i] = arr[j];
+//                arr[j] = temp;
+//            }
+//        }
+//    }
+//        Console.WriteLine(arr[i]);
+    
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// X pattern
+
+//int[,] arr = new int[4, 4] { { 6, 8, 9 ,6}, { 7, 3, 4,5 },
+//                         { 2, 5, 8,2 },{ 6,3,9,5} };
+//for (int i = 0; i < arr.GetLength(0); i++)
+//{
+//    for (int j = 0; j < arr.GetLength(1); j++)
+//    {
+//        if (i == j || j==arr.GetUpperBound(1)-i)
+//        {
+//            Console.Write(arr[i, j] + "   ");
+//        }
+//        else
+//        {
+//            Console.Write("   ");
+//        }
+//    }
+//    Console.WriteLine();
+//}
+
+
+// Prime number in an array
+
+//public class Prime
+//{
+//    public static void checkprime(int[] a)
+//    {
+//        for (int i = 0; i < a.Length; i++)
+//        {
+//            bool Isprime = true;
+//            int n = a[i];
+//            for (int j = 2; j < n; j++)
+//            {
+//                if(n%j==0)
+//                {
+//                    Isprime = false;
+//                    break;
+//                }
+
+
+//            }
+//            if(Isprime==true)
+//            {
+//                Console.WriteLine(a[i]+"   is prime");
+//            }
+//        }
+//    }
+//    static void Main(string[] args)
+//    {
+//        int[] a = { 8, 9, 7, 5, 3, 2 };
+
+//        Prime.checkprime(a);
+//    }
+//}
+
+
+
+// Prime number in another method
+
+
+//class Prime
+//{
+//    public static bool  checkprime(int n)
+//    {
+//        bool Isprime = true;
+//        for (int i = 2; i <n; i++)
+//        {
+//            if(n%i==0)
+//            {
+//                Isprime = false;
+//                break;
+//            }
+//        }
+//        if(Isprime==true)
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//    }
+//    public static void Main(string[] args)
+//    {
+//        int[] arr = new int[] { 7, 9, 5, 2, 6 };
+//        for (int i = 0; i <arr. Length; i++)
+//        {
+//            bool Isprime = Prime.checkprime(arr[i]);
+//            if(Isprime==true)
+//            {
+//                Console.WriteLine(arr[i]+"  is Prime number");
+//            }
+//        }
+//    }
+//}
+
+
+
+
+// Sum of Row in an array
+
+//int[,] arr = new int[3, 3]
+//{ { 4,5,6},{7,8,3 },{5,9,2} };
+
+//for (int i = 0; i < arr.GetLength(0); i++)
+//{
+//    int sum = 0;
+//    for (int j = 0; j < arr.GetLength(1); j++)
+//    {
+//        sum = sum + arr[i, j];
+//    }
+//    Console.WriteLine(sum);
+//}
+
+
+
+
+
+
+// See https://aka.ms/new-console-template for more information
+// count numbers of vowels in a string
+
+//string str;
+//str = Console.ReadLine();
+//char[] ch = str.ToCharArray();
+//int count = 0;
+//for (int i = 0; i < str.Length; i++)
+//{
+//    if (ch[i] == 'a' || ch[i] == 'e' || ch[i] == 'i' 
+//        || ch[i] == 'o' || ch[i] == 'u' ||
+//        ch[i] == 'A' || ch[i] == 'E' || ch[i] == 'I' 
+//        || ch[i] == 'O' || ch[i] == 'U')
+//    {
+//        count++;
+//    }
+
+
+//}
+//Console.WriteLine(count);
+
+
+
+
+// Count Number of Digit In a string
+
+//string str;
+//str = Console.ReadLine();
+//char[] ch = str.ToCharArray();
+//int count = 0;
+//for (int i = 0; i <str.Length; i++)
+//{
+//    if (ch[i] >='0' && ch[i] <='9')
+//    {
+//        count++;
+//    }
+//}
+//Console.WriteLine("Number of Digit in astring is="+count);
+
+
+
+// Number of occurence in a string
+
+//class Stringocuure
+//{
+//    static void Main(string[] args)
+//    {
+//        String str;
+//        Console.WriteLine("Enter string");
+//        str = Console.ReadLine();
+//        String[] w = str.Split(" ");
+//        bool Ispresent = false;
+
+
+//        for (int i = 0; i < w.Length; i++)
+//        {
+//            int count = 1;
+//            for (int j = i-1; j >=0; j--)
+//            {
+//                if (w[i] == w[j])
+//                {
+//                    Ispresent = true;
+//                    break;
+//                }
+//            }
+
+//            if (Ispresent==false)
+//            {
+//                for (int k = i+1; k < w.Length; k++)
+//                {
+//                    if (w[i] == w[k])
+//                    {
+//                        count++;
+//                    }
+//                }
+
+//                Console.WriteLine(w[i]+" "+count);
+//            }
+//        }
+
+//    }
+//}
+
+
+// reverse string word except 1st and last
+
+//class Reverseword
+//{
+//    static void Main(string[] args)
+//    {
+//        String str = "Hello welcome to Dotnet";
+//        string[] w = str.Split(" ");
+//        string rev = " ";
+
+//        for (int i = 1; i < w.Length - 1; i++)
+//        {
+//            string s = w[i];
+//            string reverse = " ";
+//            for (int j = s.Length - 1; j >= 0; j--)
+//            {
+
+//                reverse = reverse + s[j];
+//            }
+//            rev = rev + reverse + " ";
+//        }
+//        Console.WriteLine(rev);
+//        Console.WriteLine(str[0]+""+ rev+""+str[str.Length - 1]);
+//    }
+//}
+
+
+//string str;
+//str = Console.ReadLine();
+//string[] w = str.Split();
+//for (int i = 0; i < w.Length; i++)
+//{
+//    for (int j = 0; j < i; j++)
+//    {
+//        Console.Write(w[j]);
+//    }
+//    Console.WriteLine();
+//}
+
+
+// Triangle Pttern
+
+//int[,] arr = new int[4, 4] { { 4, 2, 6, 3 }, { 9,2,6,1},
+//                       {8,4,6,2 },{7,5,3,1}};
+//for (int i = 0; i < arr.GetLongLength(0); i++)
+//{
+//    for (int j = 0; j <arr.GetLength(1); j++)
+//    {
+//        if (i == 0 || j == arr.GetUpperBound(1) || i == j)
+//        {
+//            Console.Write(arr[i,j]+" ");
+//        }
+//        else
+//        {
+//            Console.Write("  ");
+//        }
+//    }
+//    Console.WriteLine();
+
+//}
+
+// 2nd Triangle paettern
+
+//int[,] arr = new int[4, 4] { { 4, 2, 6, 3 }, { 9,2,6,1},
+//                       {8,4,6,2 },{7,5,3,1}};
+//for (int i = 0; i < arr.GetLongLength(0); i++)
+//{
+//    for (int j = 0; j < arr.GetLength(1); j++)
+//    {
+//        if (j == 0 || i == arr.GetUpperBound(0) || i == j)
+//        {
+//            Console.Write(arr[i, j] + " ");
+//        }
+//        else
+//        {
+//            Console.Write("  ");
+//        }
+//    }
+//    Console.WriteLine();
+
+//}
+
+
+
+
+// Anagram
+
+
+Console.WriteLine("Enter 1st string");
+        string str1 = Console.ReadLine();
+        Console.WriteLine("Enter 2nd String");
+        String str2 = Console.ReadLine();
+
+        string st = str1.ToLower();
+        string st1 = str1.ToLower();
+
+        char[] ch1 = st.ToCharArray();
+        char[] ch2 = st1.ToCharArray();
+
+        Array.Sort(ch1);
+        Array.Sort(ch2);
+
+        Console.WriteLine(string.Join(" ", ch1));
+        Console.WriteLine(string.Join(" ", ch2));
+
+        string s1 = new string(ch1);
+        string s2 = new string(ch2);
+
+        if (s1==s2)
+        {
+            Console.WriteLine("Both string is anagram");
+        }
+        else
+        {
+            Console.WriteLine(" Both string is Not Anagram");
+        }
+   
+
+
+
+
+
+//class Demo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Console.WriteLine("Enter the name");
+    //        string nm = Console.ReadLine();
+    //        Console.WriteLine("enter age");
+    //        try
+    //        {
+    //            int age = int.Parse(Console.ReadLine());
+    //            Console.WriteLine($"Name:" + nm + " Age" + age);
+    //            Console.WriteLine("Character at5th position in name:" + nm[4]);
+    //            try
+    //            {
+
+    //                Console.WriteLine("Enter two number");
+    //                int a = int.Parse(Console.ReadLine());
+    //                int b = int.Parse(Console.ReadLine());
+    //                Console.WriteLine("Division :" + a / b);
+    //            }
+    //            catch (IndexOutOfRangeException i)
+    //            {
+    //                Console.WriteLine(i.Message);
+    //            }
+    //        }
+    //        catch (FormatException e)
+    //        {
+    //            Console.WriteLine("Please enter valid input");
+    //        }
+    //        catch (IndexOutOfRangeException e1)
+    //        {
+    //            Console.WriteLine(e1.Message);
+    //        }
+    //        catch (SystemException e2)
+    //        {
+    //            Console.WriteLine(e2.Message);
+    //        }
+    //        for (int i = 1; i <= 10; i++)
+    //        {
+    //            Console.WriteLine(i);
+    //        }
+    //    }
+    //}
+
+    // REmove Duplicate
+
+    //public class Weekname
+    //{
+    //    public static void Main(string[] args)
+    //    {
+    //        ArrayList al = new ArrayList();
+    //        al.Add("Sun");
+    //        al.Add("Mon");
+    //        al.Add("Sat");
+    //        al.Add("Sun ");
+    //        al.Add("Mon ");
+    //        al.Add("Sat ");
+    //        al.Add("Sun ");
+    //        al.Add("Sat ");
+    //        al.Add("Sun ");
+    //        al.Add("sat");
+    //        int num = 10;
+    //        int count = 1; ;
+    //        foreach (var i in al)
+    //        {
+    //            Console.WriteLine(i);
+    //        }
+    //        Console.WriteLine("After remove");
+    //        for (int i = 0; i < num; i++)
+    //        {
+    //            for (int j = i + 1; j < num; j++)
+    //            {
+
+    //                if (al[i] == al[j])
+    //                {
+    //                    al.Remove(j);
+    //                    j--;
+    //                }
+
+    //            }
+    //            Console.WriteLine(al[i]);
+    //        }
+
+    //    }
+    //}
+
+
+    // Sort 
+
+    //public class Sort
+    //{
+    //    public static void Main(string[] args)
+    //    {
+    //        ArrayList list = new ArrayList();
+    //        list.Add("Dhiraj");
+    //        list.Add("Yogesh");
+    //        list.Add("Pranav");
+    //        list.Add("Sanket");
+
+    //        Console.WriteLine("Before sort");
+    //        foreach (string s in list)
+    //        {
+    //            Console.WriteLine(s);
+    //        }
+    //        Console.WriteLine("after Reverse");
+    //        list.Reverse();
+    //        foreach (string s in list)
+    //        {
+    //            Console.WriteLine(s);
+    //        }
+    //    }
+    //}
+
+
+    // Class Player
+
+    //public class player
+    //{
+    //    private int pid;
+    //    private string name, country, team;
+    //    public player(int pid, string name, string country, string team)
+    //    {
+    //        this.pid = pid;
+    //        this.name = name;
+    //        this.country = country;
+    //        this.team = team;
+
+    //    }
+    //    public override string ToString()
+    //    {
+    //        return $"{pid} {name} {country} {team}";
+    //    }
+    //}
+
+    //class program
+    //{
+    //    public static void main(string[] args)
+    //    {
+    //        ArrayList list = new ArrayList()
+    //        {
+    //            new player(101, "dhoni", "india", "chennai super king"),
+    //            new player(102, "rohit", "india", "mumbai indians"),
+    //     new player(103, "maxwell", "austeria", "royal challenger banglore"),
+    //            new player(104, "warner", "austeria", "delhi capitals"),
+    //            new player(101, "smith", "austeria", "rajsthan royal"),
+
+    //        };
+
+    //        foreach (player i in list)
+    //        {
+    //           Console.WriteLine(i);
+    //        }
+
+    //    }
+    //}
+
+
+    // Studnet
+
+    // class Student
+    //{
+    //    int id;
+    //    string name;
+    //    ArrayList hobbies;
+
+    //    public Student()
+    //    {
+    //        //this.id = id;
+    //        //this.name = name;
+    //        //this.hobbies = hobbies;
+    //    }
+
+    //    public int Id
+    //    {
+    //        set { value = id; }
+    //        get { return id; }
+    //    }
+    //    public string Name
+    //    {
+    //        set { value = name; }
+    //        get { return name; }
+    //    }
+    //    public ArrayList Hobbies
+    //    {
+    //        set { value = hobbies; }
+    //        get { return hobbies; }
+    //    }
+    //    public override string ToString()
+    //    {
+    //        return $"{id} {name} {hobbies}";
+    //    }
+
+
+
+
+    //    public static void Main(string[] args)
+    //    {
+
+    //        Student s = new Student();
+    //        s.id = 101;
+    //        s.name = "Yogesh";
+    //        s.hobbies = new ArrayList();
+    //        s.hobbies.Add("Cricket");
+    //        s.hobbies.Add("Chess");
+
+    //        Student s1 = new Student();
+    //        s1.id = 102;
+    //        s1.name = "Dhiraj";
+    //        s1.hobbies = new ArrayList();
+    //        foreach (var i in s1)
+    //       s1. hobbies.Add("Hollyball");
+    //       s1.hobbies.Add("Football");
+
+    //        Console.WriteLine($"{s.id} {s.name} {s.hobbies}");
+    //        Console.WriteLine( $"{s1.id} {s1.name} {s1.hobbies}");
+    //    }
+    //}
+
+
+
+    // Exception
+    //class Exceptiondemo
+    //{
+    //    static void main(string[] args)
+    //    {
+    //        console.writeline("enter the name");
+    //        string nm = console.readline();
+    //        console.writeline("enter age");
+    //        try
+    //        {
+    //            int age = int.parse(console.readline());
+    //            console.writeline($"name:" + nm + " age" + age);
+    //            console.writeline("character at5th position in name:" + nm[4]);
+    //            try
+    //            {
+
+    //                console.writeline("enter two number");
+    //                int a = int.parse(console.readline());
+    //                int b = int.parse(console.readline());
+    //                console.writeline("division :" + a / b);
+    //            }
+
+    //            catch (indexoutofrangeexception i)
+    //            {
+    //                console.writeline(i.message);
+    //            }
+    //        }
+    //        catch (formatexception e)
+    //        {
+    //            console.writeline("please enter valid input");
+    //        }
+    //        catch (indexoutofrangeexception e1)
+    //        {
+    //            console.writeline(e1.message);
+    //        }
+    //        catch (systemexception e2)
+    //        {
+    //            console.writeline(e2.message);
+    //        }
+    //        for (int i = 1; i <= 10; i++)
+    //        {
+    //            console.writeline(i);
+    //        }
+    //    }
+
+    //    class Demo1
+    //    {
+    //        static void Divsion(int a, int b)
+    //        {
+    //            Console.WriteLine("Division:" + a / b);
+    //        }
+    //        static void Main(string[] args)
+    //        {
+    //            Console.WriteLine("Main start");
+    //            try
+    //            {
+    //                Divsion(12, 0);
+    //            }
+    //            catch (DivideByZeroException e)
+    //            {
+    //                Console.WriteLine("enter correct number");
+    //                Console.WriteLine(e.Message);
+    //            }
+    //            Console.WriteLine("Main methods ends");
+    //        }
+
+    //        class Demo
+    //        {
+    //            int c;
+    //            string nm;
+
+    //            public Demo(int c, string nm)
+    //            {
+    //                this.c = c;
+    //                this.nm = nm;
+
+    //            }
+
+    //            public string Nm { get => nm; set => nm = value; }
+    //        }
+
+    //        class Demo1
+    //        {
+    //            static void Main(string[] args)
+    //            {
+    //                try
+    //                {
+
+
+    //                    Demo[] d = new Demo[4];
+
+    //                    Console.WriteLine(d[0].Nm);
+    //                }
+    //                catch (NullReferenceException e)
+    //                {
+    //                    Console.WriteLine(e.Message);
+    //                }
+    //            }
+    //        }
+
+
+    // Exception
+
+    //class Exceptiondemo
+    //{
+    //    static void main(string[] args)
+    //    {
+    //        console.writeline("enter the name");
+    //        string nm = console.readline();
+    //        console.writeline("enter age");
+    //        try
+    //        {
+    //            int age = int.parse(console.readline());
+    //            console.writeline($"name:" + nm + " age" + age);
+    //            console.writeline("character at5th position in name:" + nm[4]);
+    //            try
+    //            {
+
+    //                console.writeline("enter two number");
+    //                int a = int.parse(console.readline());
+    //                int b = int.parse(console.readline());
+    //                console.writeline("division :" + a / b);
+    //            }
+
+    //            catch (indexoutofrangeexception i)
+    //            {
+    //                console.writeline(i.message);
+    //            }
+    //        }
+    //        catch (formatexception e)
+    //        {
+    //            console.writeline("please enter valid input");
+    //        }
+    //        catch (indexoutofrangeexception e1)
+    //        {
+    //            console.writeline(e1.message);
+    //        }
+    //        catch (systemexception e2)
+    //        {
+    //            console.writeline(e2.message);
+    //        }
+    //        for (int i = 1; i <= 10; i++)
+    //        {
+    //            console.writeline(i);
+    //        }
+
+
+    // custom exception
+
+    //class InvalidPasswordException : ApplicationException
+    //{
+    //    public InvalidPasswordException(string msg) : base(msg)
+    //    {
+
+    //    }
+    //}
+    //class InvalidMobileException : ApplicationException
+    //{
+
+    //}
+    //class USer
+    //{
+    //    string nm;
+    //    long mobile;
+    //    string password;
+    //    public void accept()
+    //    {
+    //        Console.WriteLine("Enter mobile number,name,Passs");
+    //        nm = Console.ReadLine();
+    //        mobile = long.Parse(Console.ReadLine());
+    //        password = Console.ReadLine();
+    //        validate();
+
+    //    }
+    //    void validate()
+    //    {
+    //        if (password.Length < 8)
+    //        {
+    //            throw new InvalidPasswordException("Password size should br greater than 8");
+    //        }
+    //        if (validmobile() == false)
+    //            throw new InvalidMobileException();
+    //    }
+    //    bool validmobile()
+    //    {
+    //        return false;
+    //    }
+    //}
+
+    //class DEmo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        USer u = new USer();
+    //        while (true)
+    //        {
+    //            try
+    //            {
+    //                u.accept();
+    //                break;
+    //            }
+    //            catch (InvalidPasswordException e)
+    //            {
+    //                Console.WriteLine(e.Message);
+    //            }
+    //        }
+    //        Console.WriteLine("Main ends");
+    //    }
+    //}
+
+
+    // user defined exception
+
+    //class InvalidPasswordException : ApplicationException
+    //{
+    //    public InvalidPasswordException(string msg) : base(msg)
+    //    {
+
+    //    }
+    //}
+    //class InvalidMobileException : ApplicationException
+    //{
+
+    //}
+    //class USer
+    //{
+    //    string nm;
+    //    long mobile;
+    //    string password;
+    //    public void accept()
+    //    {
+    //        Console.WriteLine("Enter mobile number,name,Passs");
+    //        nm = Console.ReadLine();
+    //        mobile = long.Parse(Console.ReadLine());
+    //        password = Console.ReadLine();
+    //        validate();
+
+    //    }
+    //    void validate()
+    //    {
+    //        if (password.Length < 8)
+    //        {
+    //            throw new InvalidPasswordException("Password size should br greater than 8");
+    //        }
+    //        if (validmobile() == false)
+    //            throw new InvalidMobileException();
+    //    }
+    //    bool validmobile()
+    //    {
+    //        return false;
+    //    }
+    //}
+
+    //class DEmo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        USer u = new USer();
+    //        while (true)
+    //        {
+    //            try
+    //            {
+    //                u.accept();
+    //                break;
+    //            }
+    //            catch (InvalidPasswordException e)
+    //            {
+    //                Console.WriteLine(e.Message);
+    //            }
+    //        }
+    //        Console.WriteLine("Main ends");
+    //    }
+    //}
+
+
+    // new program
+
+    //class Person
+    //{
+    //    string name;
+    //    ArrayList hobbies;
+    //    public Person(string name,ArrayList hobbies)
+    //    {
+    //        this.Name = name;
+    //        this.Hobbies = hobbies;
+    //    }
+    //    public string Name { get => name; set => name = value; }
+    //    public ArrayList Hobbies { get => hobbies; set =>hobbies = value; }
+    //}
+
+    //class PersonDemo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        ArrayList plist = new ArrayList();
+    //        do
+    //        {
+    //            Console.WriteLine("Enter name");
+    //            string nm = Console.ReadLine();
+    //            Console.WriteLine("Enter Number of hobbies");
+    //            int c = int.Parse(Console.ReadLine());
+    //            ArrayList hobbieslist = new ArrayList();
+    //            for(int i=1;i<=c;i++)
+    //            {
+    //                Console.WriteLine($"{nm} enter ur hobby");
+    //                string h = Console.ReadLine();
+    //                hobbieslist.Add(h);
+    //            }
+    //            Person p = new Person(nm, hobbieslist);
+    //            plist.Add(p);
+
+    //            Console.WriteLine("Do you want to continue");
+    //            string choice = Console.ReadLine().ToLower();
+
+    //            if (choice == "no")
+    //                break;
+    //        } while (true);
+    //    }
+    //}
+
+
+    //class order
+
+    //class Order
+    //{
+    //    int id;
+    //    string customer;
+    //    string city;
+    //    ArrayList item;
+
+    //    public Order(int id, string customer, string city, ArrayList item)
+    //    {
+    //        this.Id = id;
+    //        this.customer = customer;
+    //        this.city = city;
+    //        this.item = item;
+    //    }
+
+    //    public int Id { get => id; set => id = value; }
+    //    public string Customer { get => customer; set => customer = value; }
+    //    public string City { get => city; set => city = value; }
+
+    //    public ArrayList Item{ get => item; set => item= value; }
+    //}
+
+    //class OrderItem
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        ArrayList orderlist = new ArrayList();
+
+    //        for (int i = 1; i <=5; i++)
+    //        {
+    //            Console.WriteLine("Enter name id cit");
+    //            int id = int.Parse(Console.ReadLine());
+    //            string nm = Console.ReadLine();
+    //            string ct = Console.ReadLine();
+    //            Console.WriteLine("Enter how many item u want");
+    //            int c = int.Parse(Console.ReadLine());
+
+    //            ArrayList itemlits = new ArrayList();
+    //            for(int j=1;j<=c;j++)
+    //            {
+    //                Console.WriteLine("Add{j} item in order");
+    //                string item = Console.ReadLine();
+    //                itemlits.Add(item);
+
+    //            }
+    //            orderlist.Add(new Order(id, nm, ct, itemlits));
+    //        }
+    //    }
+    //}
+
+
+
+    // Hashtable
+
+    //class Student
+    //{
+    //    int id;
+    //    string nm;
+
+    //    public Student(int id, string nm)
+    //    {
+    //        this.Id = id;
+    //        this.Nm = nm;
+    //    }
+
+    //    public int Id { get => id; set => id = value; }
+
+    //    public string Nm { get => nm; set => nm = value; }
+    //    public override string ToString()
+    //    {
+    //        return $"Id"+id+ "Name"+nm;
+    //    }
+    //} 
+
+    //class Demo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Hashtable ht = new Hashtable();
+    //        ht.Add("Yogesh", 101);
+    //        ht.Add("Dhiraj", 102);
+    //            ht.Add(102, "Sanket");
+    //        ht.Add(new Student(103, "Pranav"), "pj@gmail.com");
+    //        ht["Dhiraj"] = 104;
+    //        foreach(DictionaryEntry d in ht)
+    //        {
+    //            Console.WriteLine(d.Key+" ="+d.Value);
+    //        }
+
+    //        Console.WriteLine("///////////");
+
+    //        //ht.Clear();
+    //        ht.Remove(102);
+    //        foreach (var d in ht.Keys)
+    //        {
+    //            Console.WriteLine(d+"   ===" + ht[d]);
+    //        }
+
+    //        Console.WriteLine(ht.ContainsKey(302));
+    //        Console.WriteLine(ht.ContainsValue(101));
+    //    }
+    //}
+
+    // Hashtable 
+
+
+    //class CustomasKey
+    //{
+    //    string nm;
+    //    int id;
+    //    public CustomasKey(string nm,int id)
+    //    {
+    //        this.Nm = nm;
+    //        this.Id = id;
+    //    }
+
+    //    public string Nm { get => nm; set => nm = value; }
+    //    public int Id { get => id; set => id = value; }
+
+    //    //public override bool Equals(object? obj)
+    //    //{
+    //    //    return obj is CustomasKey key &&
+    //    //           nm == key.nm &&
+    //    //           id == key.id &&
+    //    //           Nm == key.Nm &&
+    //    //           Id == key.Id;
+    //    //}
+
+    //    //public override int GetHashCode()
+    //    //{
+    //    //    return HashCode.Combine(nm, id, Nm, Id);
+    //    //}
+    //    public override bool Equals(object? obj)
+    //    {
+    //        CustomasKey c = (CustomasKey)obj;
+    //        return nm == c.nm && id == c.id;
+    //    }
+    //    public override int GetHashCode()
+    //    {
+    //        return id;
+    //    }
+
+    //    public override string ToString()
+    //  {
+    //       return $"Nm"+nm +"Id"+id;
+    //   }
+
+    //}
+
+    //class Demo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Hashtable ht = new Hashtable();
+    //        ht.Add(new CustomasKey ("Pranav",1), "pj@gmail.com");
+    //        ht.Add(new CustomasKey("Pranav", 1), "pj@gmail.com");
+    //        ht.Add(new CustomasKey("Pranav", 1), "pj@gmail.com");
+
+    //        foreach(DictionaryEntry d in ht)
+    //        {
+    //            Console.WriteLine(d.Key+" "+d.Value);
+    //        }
+
+    //    }
+    //}
+
+
+
+    // Frequency count using hashtable
+
+    //class Frequ
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        ArrayList al = new ArrayList()
+    //        {
+    //            "sun","mon","tue", "sun","mon","tue","sun","sat","wed"
+    //        };
+
+    //        Hashtable ht = new Hashtable();
+    //        foreach(dynamic d in al)
+    //        {
+    //            if(ht.ContainsKey(d))
+    //            {
+    //                int value = (int)ht[d];
+    //                ht[d] = value + 1;
+    //            }
+    //            else
+    //            {
+    //                ht.Add(d, 1);
+    //            }
+    //        }
+    //        foreach(DictionaryEntry d1 in ht)
+    //        {
+    //            Console.WriteLine(d1.Key+"="+d1.Value);
+    //        }
+    //    }
+    //}
+
+
+
+    // stack
+    using System.Collections;
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Stack st = new Stack();
+    //        st.Push("Yogesh");
+    //        st.Push("Pranav");
+    //        st.Push("Dhiraj");
+
+    //        foreach(object o in st)
+    //            Console.WriteLine(o);
+
+
+    //        string d = (string)st.Pop();
+    //        Console.WriteLine("Removed]===="+d);
+
+    //        foreach(object ob in st)
+    //            Console.WriteLine(ob);
+
+    //        Console.WriteLine("Peak"+st.Peek());
+
+    //    }
+    //}
+
+
+
+    // Queue
+
+
+    //class Demo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Queue q = new Queue();
+
+    //        q.Enqueue(10);
+    //        q.Enqueue(20);
+    //        q.Enqueue(30);
+    //        q.Enqueue(40);
+
+    //        foreach(Object o in q)
+    //            Console.WriteLine(o);
+
+
+    //        int i = (int)q.Dequeue();
+    //        Console.WriteLine("Removed=="+i);
+    //    }
+    //}
+
+    //Arraylist in hashtable
+
+    //class Demo
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Hashtable h = new Hashtable();
+    //        h.Add("Ram", "Java");
+    //        h.Add("Shyam", "C#");
+    //        h.Add("Joy", "Java");
+    //        h.Add("Roy", "C#");
+
+    //        ArrayList al = new ArrayList();
+
+    //        al.Add("Ram");
+    //        al.Add("Shyam");
+    //        al.Add("Joy");
+    //        al.Add("Roy");
+
+
+
+    //        Hashtable h2 = new Hashtable();
+    //        //h2.Add("Java", al[h]);
+    //        //h2.Add( "c#",al);
+    //        //h2.Add( "Java",al);
+    //        //h2.Add( "c#",al);
+    //        h2.Add(h, al);
+    //        foreach(DictionaryEntry d in h2)
+    //            Console.WriteLine(d.Key+"="+d.Value);
+
+    //    }
+    //}
+
